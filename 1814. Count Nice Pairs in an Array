@@ -1,0 +1,37 @@
+class Solution {
+
+    public static int reverse(int num) {
+        int rev_num = 0;
+        while (num > 0) {
+            rev_num = rev_num * 10 + num % 10;
+            num = num / 10;
+        }
+        return rev_num;
+    }
+
+    public static int countNicePairs(int[] nums) {
+        int rev[] = new int[nums.length];
+        int n = nums.length;
+        HashMap<Integer, Integer> hm = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            int key = nums[i] - reverse(nums[i]);
+           
+            nums[i]= key;
+        }
+
+        int count =0;
+        int M =1000000007;
+        for(int i = 0; i < n; i++)
+        {
+            int e = nums[i];
+            if(hm.containsKey(e))
+            {
+                count=(int)((count + hm.get(e)) % M);
+
+            }
+            hm.put(e,hm.getOrDefault(e,0)+1);
+        }
+
+        return (count);
+    }
+}
