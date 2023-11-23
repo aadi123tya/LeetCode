@@ -1,0 +1,39 @@
+class Solution {
+//NOTES
+// To check if a given sequence is arithmetic, just check that the difference between every two consecutive elements is the same.
+// If and only if a set of numbers can make an arithmetic sequence, then its sorted version makes an arithmetic sequence. So to check a set of numbers, sort it, and check if that sequence is arithmetic.
+// For each query, get the corresponding set of numbers which will be the sub-array represented by the query, sort it, and check if the result sequence is arithmetic.
+
+    public static boolean check(int arr[]) {
+        if (arr.length == 2) return true;
+          Arrays.sort(arr);
+        int diff = arr[1] - arr[0];
+      
+        for (int i = 1; i < arr.length - 1; i++) {
+            if ((arr[i] + diff) != arr[i + 1]) return false;
+        }
+        return true;
+    }
+
+    public List<Boolean> checkArithmeticSubarrays(int[] nums, int[] l, int[] r) {
+        List<Boolean> answer = new ArrayList<>();
+        int n = l.length;
+        for (int i = 0; i < n; i++) {
+            int si = l[i];
+            int ei = r[i];
+            int arr[] = new int[ei - si + 1];
+            int j = 0;
+            for (int k = si; k <= ei; k++) {
+                arr[j++] = nums[k];
+            }
+            for(int e:arr)
+            {
+                System.out.print(e+" ");
+            }
+            System.out.println();
+            
+            if (check(arr)) answer.add(true); else answer.add(false);
+        }
+        return answer;
+    }
+}
