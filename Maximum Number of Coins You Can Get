@@ -1,0 +1,20 @@
+//NOTES: You have only 3n piles of coin .and you have to picksecond maximum piles of coin becuase first maximum pile is picked by bob. 
+  
+class Solution {
+    public int maxCoins(int[] piles) {
+        int res =0;
+        Arrays.sort(piles);
+        int j=piles.length-1;
+        int i = piles.length-3;
+        int step = piles.length/3;
+        while(step!=0)
+        {
+            res+=piles[j-1];
+            j=i;
+            i=j-2;
+            step--;
+        }
+        return res;
+        
+    }
+}
