@@ -1,0 +1,38 @@
+class Solution {
+
+
+    private static final int M = 1000000007;
+
+
+
+
+    public int solve(int n, int cell, int grid[][], int dp[][]) {
+        if (n == 0) return 1;
+
+        if (dp[n][cell] != -1) return dp[n][cell];
+        int count = 0;
+
+        int arr[] = grid[cell];
+
+        for (int i = 0; i < arr.length; i++) {
+            count = (count + solve(n - 1, arr[i], grid, dp)) % M;
+        }
+
+        return dp[n][cell] = count;
+    }
+
+
+
+
+    public int knightDialer(int n) {
+        int check[] = new int[10];
+        int dp[][] = new int[5001][10];
+        Arrays.stream(dp).forEach(row -> Arrays.fill(row, -1));//new Method for the assign value to each cell.
+        int grid[][] = { { 6, 4 }, { 6, 8 }, { 7, 9 }, { 8, 4 }, { 9, 0, 3 }, {}, { 1, 0, 7 }, { 2, 6 }, { 3, 1 }, { 2, 4 } };
+        int count = 0; //number of the distinct numbers.
+        for (int cell = 0; cell < 10; cell++) {
+            count = (count + solve(n - 1, cell, grid, dp)) % M;
+        }
+        return count;
+    }
+}
