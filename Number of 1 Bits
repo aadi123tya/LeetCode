@@ -1,0 +1,56 @@
+public class Solution {
+
+    // you need to treat n as an unsigned value
+    public int hammingWeight(int n) {
+        //   -----------------DONT USE THIS METHOD -----------
+// Simply You convert the int =>BinaryString and simply count 1 bit .
+        // String s =Integer.toBinaryString(n);
+        // int count =0;
+        // int i =0;
+        // while(i<s.length())
+        // {
+        //    char ch = s.charAt(i++);
+        //    int chInt  = ch-'0';
+        //    if((chInt^1)==0)count++;
+        // }
+        // return count;
+        // --------------------------------------------------
+  // using inbuilt function that return count of 1 bit.
+        // int count =Integer.bitCount(n);
+        // return count;
+
+
+
+
+
+        // --------------OPTIMISED METHOD---------------
+
+
+        // -------------------------------APPROACH-I-----------------------
+// 1=> traverse from 0 to 32 bit 
+// 2=> n&1!=0  then increase the bitCount
+// 3=> left shift the 1 by 1 for 32 times.
+        // int bit = 0;
+        // int mask = 1;
+
+        // for (int i = 0; i < 32; i++) {
+        //     if ((n & mask) != 0) bit++;
+        //     mask = mask << 1;
+        // }
+        // return bit;
+
+
+        //------------------------------ APPROACH-II-------------------------
+// 1=> here we calculate the "&" between current and previous number;
+// 2=> regularly increase the count till 'n' not equal to zero.
+        // int bitCount =0;
+        // while(n!=0)
+        // {
+        //     bitCount++;
+        //     n = n&(n-1);
+        // }
+        // return bitCount;
+
+
+    }
+}
