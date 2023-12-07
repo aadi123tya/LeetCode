@@ -1,0 +1,36 @@
+  static long countSubarrays(int a[], int n, int L, int R)  
+    { 
+      long ans =0L;
+      int b_wLR =0;
+      int lessL =0;
+      int j =0;
+      while(j<n)
+      {
+          
+           if(a[j]<L)
+          {
+              ans+=(b_wLR);//   if curr element is smaller than L is not included as a  single length subarray)
+              lessL++; 
+          }
+          else if(a[j]>R)
+          {
+              b_wLR =0;
+              lessL =0;
+              
+          }
+          else 
+          {
+              
+              ans+=(b_wLR+lessL+1); /// if curr element is between L and R then we add all previous subarray with curr subarray
+                                        insert number of lessL subarray in the bwLR 
+                                        LESSL =0;
+              b_wLR+=(lessL+1);
+              lessL=0;
+        
+          
+          }
+          j++;
+      }
+      return ans;
+        
+    } 
