@@ -1,0 +1,29 @@
+ public void recur(TreeNode root,StringBuilder sb)
+//chalo hote hi '('
+// band  hot he ')'    {
+      sb.append(root.val);
+      if(root.left!=null)
+      {
+        sb.append('(');
+        recur(root.left,sb);
+        sb.append(')');
+      }
+      
+      if(root.right!=null)
+      {
+        if(root.left==null) {sb.append("()");}
+        sb.append('(');
+        recur(root.right,sb);
+        sb.append(')');
+
+      }
+      
+        
+    }
+    public String tree2str(TreeNode root) {
+        StringBuilder sb = new StringBuilder();
+        recur(root,sb);
+        // sb.append(')');
+        return sb.toString();
+        
+    }
