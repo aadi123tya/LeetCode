@@ -1,0 +1,44 @@
+
+//notes 
+cal sum.
+check for prime after the sum time prime not found.
+increament the n
+
+
+class Solution
+{
+     public static  boolean checkPrimeOrNot(int n)
+    {
+       
+        int m = n/2;
+        if(n==0 || n==1)
+        { return false;  }
+        else 
+        {
+            for(int i=2;i<=m;i++)
+            {
+                if(n%i==0)
+                {
+               
+                     return false;      
+                    
+                }
+            }
+        }
+        return true;
+    }
+    public int minNumber(int arr[], int N)
+    {
+        int sum =0;
+        for(int e:arr)sum+=e;
+        int n =0;
+        
+        while(!checkPrimeOrNot(sum))
+        {
+            sum+=1;
+            n++;
+        }
+        return n;
+
+    }
+}
