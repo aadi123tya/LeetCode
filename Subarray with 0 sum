@@ -1,0 +1,32 @@
+class Solution{
+    //Function to check whether there is a subarray present with 0-sum or not.
+    static boolean findsum(int arr[],int n)
+    {
+        /*
+         Notes : prefixSum concept 
+         let take ex 
+          4 2 -3 1 6
+          aply prefix sum 
+          4 6 3 4 10
+          ^     ^
+        this two are sum means 
+        
+        4--(+2)-->6---(-3)---
+-3-(+1)-4      it means sum_Zero is present   
+        
+        */
+        
+        HashSet<Integer> hs = new HashSet<>();
+       int prefixSum =arr[0];
+       hs.add(prefixSum);
+       for(int i=1;i<n;i++)
+       {
+           prefixSum+=arr[i];
+           if(prefixSum==0 || hs.contains(prefixSum))return true;
+           hs.add(prefixSum);
+           
+       }
+       return false;
+       
+    }
+}
