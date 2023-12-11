@@ -1,0 +1,28 @@
+class Solution{
+    static long maximumSumSubarray(int K, ArrayList<Integer> Arr,int N){
+       
+       long sum =0L;
+       long max =0L;
+       int i =0;
+       for(int j=0;j<Arr.size();j++)
+       {
+           int subarrSize=j-i+1;
+           sum+=(long)Arr.get(j);
+           if(subarrSize==K)max=Math.max(sum,max);
+           if(subarrSize>K)
+           {
+               while((j-i+1)>K)
+               {
+                   long e = Long.valueOf(Arr.get(i++));
+                   sum-=e;
+                   
+                   
+               }
+               if((j-i+1)==K)max=Math.max(sum,max);
+           }
+           
+           
+       }
+       return max;
+    }
+}
