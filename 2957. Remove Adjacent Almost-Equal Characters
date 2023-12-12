@@ -1,0 +1,46 @@
+//CPP
+/*
+Notes 
+=> start from i=1 and check for just prev character.
+=> if curr and prev not almost Equal then i takes one step.
+=> if curr and prev  almost Equal then i takes two step. and increament count.
+*/
+class Solution
+{
+    public:
+        int removeAlmostEqualCharacters(string word)
+        {
+            int removeAlphCount = 0;
+            for (int i = 1; i < word.length();)
+            {
+                int prev = word[i - 1] - 'a';
+                int curr = word[i] - 'a';
+               	// System.out.println(curr+" "+prev);
+                if (curr == prev || (curr + 1) == prev || (curr - 1) == prev || (prev + 1) == curr || (prev - 1) == curr)
+                {
+                    removeAlphCount++;
+                    i += 2;
+                }
+                else i++;
+            }
+            return removeAlphCount;
+        }
+};
+
+// JAVA 
+class Solution {
+
+    public int removeAlmostEqualCharacters(String word) {
+        int removeAlphCount = 0;
+        for (int i = 1; i < word.length();) {
+            int prev = word.charAt(i - 1) - 'a';
+            int curr = word.charAt(i) - 'a';
+            // System.out.println(curr+" "+prev);
+            if (curr == prev || (curr + 1) == prev || (curr - 1) == prev || (prev + 1) == curr || (prev - 1) == curr) {
+                removeAlphCount++;
+                i += 2;
+            } else i++;
+        }
+        return removeAlphCount;
+    }
+}
