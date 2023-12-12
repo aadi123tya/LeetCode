@@ -1,0 +1,41 @@
+
+//   JAVA
+class Solution{
+   
+    static int maxGold(int n, int m, int M[][])
+    {
+        int rowLen =n;
+        int colLen =m;
+       for(int i=1;i<colLen;i++)
+       {
+            for(int r =0;r<rowLen;r++)
+            {
+           int max = 0; 
+           int sum =0;
+           int curr = M[r][i];
+
+           if(r-1!=-1)//for upper diagonal
+           {
+               sum =  M[r-1][i-1] + curr;             //curr+prev 
+               max = Math.max(sum,max);
+           }
+           if(r+1<rowLen)//for lower diagonal
+           {
+               sum =  M[r+1][i-1] + curr;             //curr+prev 
+               max = Math.max(sum,max);
+           }
+           //for backward idx c-1 , r will be same
+               sum =  M[r][i-1] + curr;             //curr+prev 
+               max = Math.max(sum,max);
+               
+           M[r][i] = max;
+            }
+           
+       }
+       
+       int ans =0;
+       for(int i=0;i<rowLen;i++)      ans = Math.max(ans,M[i][colLen-1]);
+    
+       return ans;
+    }
+}
