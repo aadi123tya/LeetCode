@@ -21,7 +21,9 @@ public:
             {
                 while(count>=k)
                 {
-                ans+=(n-j);
+                ans+=(n-j);    //==> {len-j} return the count of all next upcoming subarray which have
+                                      current subarray.
+
                 if(nums.at(i)==maxEle) 
                 {
                     count--;
