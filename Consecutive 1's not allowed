@@ -1,0 +1,30 @@
+/*
+NOTES:
+     => concept of fibonacci number {  n = (n-1) + (n-2) }
+     n=1 -> 2
+     n=2 -> 3
+     n=3 -> 5  
+     n=4 -> 8
+     n=5 -> 12
+*/
+        
+class Solution{
+public:
+	// #define ll long long
+	ll countStrings(int n) {
+	 const long M = 1e9+7;
+	 if(n==1)return 2;
+	 if(n==2)return 3;
+	 long long first = 2;
+	 long long second = 3;
+	 int i=2;
+	 while(i<n)
+	 {
+	     int temp = second;
+	     second = (first+second)%M;
+	     first = temp;
+	     i++;
+	 }
+	 return second%M;
+	}
+};
