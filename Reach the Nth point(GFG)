@@ -1,0 +1,24 @@
+
+
+class Solution{
+	public:
+		int nthPoint(int n){
+		    // Code here    // Approach similar to the fibonacci approach 
+    if(n==1 || n==2 || n==3)return n;
+    int M = 1e9+7;
+    int first  = 2;
+    int second = 3;
+    
+    for(int i=3;i<n;i++)
+    {
+        int temp =( second+first)%M;
+        first  = second;
+        second = temp;
+    }
+  return second%M;
+    
+    
+    
+		}
+};
+
