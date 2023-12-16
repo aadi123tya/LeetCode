@@ -1,0 +1,19 @@
+
+long long int countStr(long long int n){
+    int M =1e9+7;
+   /*Permutation And combination
+   => permutation = n!/(number of repeated character in pattern)! . (number of diff repeated characterin pattern)!
+   => combination = n!/r!(n-r)!
+   
+   question formula = 1 +  n +  n  +  n*(n-1)+  (n*n-1/2)  +  (n*n-1*n-2)/2;
+   
+            
+   */
+   long long int res =( 2*n )+1;
+   res+=n*(n-1);
+   res+=((n*(n-1))/2);
+   res+=((n*(n-1)*(n-2))/2);
+   return res;
+   
+   
+}
