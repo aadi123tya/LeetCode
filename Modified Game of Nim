@@ -1,0 +1,18 @@
+
+class Solution{
+public:
+    int findWinner(int n, int A[]){
+        
+       int res =0;
+       int i =0;
+       while(i<n)
+       {
+           res^=A[i++];
+       }
+       if(res==0)return 1;
+       
+       else 
+       return (n%2==0)?1:2;
+    }
+};
+
